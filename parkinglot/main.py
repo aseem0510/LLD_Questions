@@ -37,10 +37,18 @@ def vacate_spot(exit_gate: ExitGate):
 
 
 def main():
-    # Initialize the parking lot with one floor and 2 car spots and 2 bike spots
-    floor = ParkingFloor(floor_number=1, num_of_car_spots=2, num_of_bike_spots=3)
-    parking_lot = ParkingLot(floors=[floor])
+    # Initialize parking lot with multiple floors
+    num_floors = int(input("Enter number of floors: "))
+    floors = []
 
+    for i in range(num_floors):
+        print(f"\nConfigure Floor {i + 1}")
+        car_spots = int(input(f"Enter number of car spots for Floor {i + 1}: "))
+        bike_spots = int(input(f"Enter number of bike spots for Floor {i + 1}: "))
+        floor = ParkingFloor(floor_number=i + 1, num_of_car_spots=car_spots, num_of_bike_spots=bike_spots)
+        floors.append(floor)
+
+    parking_lot = ParkingLot(floors=floors) 
     # Initialize services
     payment_service = PaymentService()
 
@@ -62,17 +70,10 @@ def main():
             park_vehicle(entrance_gate)
         elif choice == 2:
             vacate_spot(exit_gate)
-        # elif choice == 3:
-        #     vehicle_type = input("Enter vehicle type (car/bike): ").strip().lower()
-        #     floor_number = int(input("Enter floor number: "))
-        #     if floor_number < 1 or floor_number > len(parking_lot.get_floors()):
-        #         print("Invalid floor number!")
-        #         continue
-        #     parking_lot.get_floors()[floor_number-1].get_status(vehicle_type)
         elif choice == 3:
             vehicle_type = input("Enter vehicle type (car/bike): ").strip().lower()
             for floor in parking_lot.get_floors():
-                print(f"Status for Floor {floor.floor_number}:")
+                print(f"\nStatus for Floor {floor.floor_number}:")
                 floor.get_status(vehicle_type)
         elif choice == 4:
             print("Thank you for using the Parking Lot System!")

@@ -5,17 +5,19 @@ from typing import List, Optional
 
 
 class ParkingFloor:
+    _global_spot_id = 1  # Class-level counter to ensure unique spot numbers
+
     def __init__(self, floor_number: int, num_of_car_spots: int, num_of_bike_spots: int):
         self.floor_number = floor_number
         self.spots: List[ParkingSpot] = []
 
-        # Add car spots
-        for i in range(num_of_car_spots):
-            self.spots.append(CarParkingSpot(i + 1))
+        for _ in range(num_of_car_spots):
+            self.spots.append(CarParkingSpot(ParkingFloor._global_spot_id))
+            ParkingFloor._global_spot_id += 1
 
-        # Add bike spots
-        for i in range(num_of_bike_spots):
-            self.spots.append(BikeParkingSpot(num_of_car_spots + i + 1))
+        for _ in range(num_of_bike_spots):
+            self.spots.append(BikeParkingSpot(ParkingFloor._global_spot_id))
+            ParkingFloor._global_spot_id += 1
 
     def find_available_spot(self, vehicle_type: str) -> Optional[ParkingSpot]:
         for spot in self.spots:
