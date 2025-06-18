@@ -2,7 +2,6 @@
 
 ## Requirements
 ![image](https://github.com/user-attachments/assets/46d3a9e4-238d-4090-a43b-cf5712453d4c)
-![image](https://github.com/user-attachments/assets/1077271b-e59c-4f1a-ae39-4089a456b7d4)
 
 
 
