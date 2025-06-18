@@ -5,8 +5,6 @@ from theater import Theater
 from show import Show
 from seat import Seat, SeatType, SeatStatus
 from user import User
-import threading
-import time
 
 class MovieTicketBookingDemo:
     @staticmethod
@@ -26,52 +24,22 @@ class MovieTicketBookingDemo:
         booking_system.add_theater(theater2)
 
         # Add shows
-        show1 = Show(
-            "S1",
-            movie1,
-            theater1,
-            datetime.now(),
-            datetime.now() + timedelta(minutes=movie1.duration_in_minutes),
-            create_seats(10, 10),
-        )
-        show2 = Show(
-            "S2",
-            movie2,
-            theater2,
-            datetime.now(),
-            datetime.now() + timedelta(minutes=movie2.duration_in_minutes),
-            create_seats(8, 8),
-        )
+        show1 = Show("S1", movie1, theater1, datetime.now(), datetime.now() + timedelta(minutes=movie1.duration_in_minutes), create_seats(10, 10))
+        show2 = Show("S2", movie2, theater2, datetime.now(), datetime.now() + timedelta(minutes=movie2.duration_in_minutes), create_seats(8, 8))
         booking_system.add_show(show1)
         booking_system.add_show(show2)
 
         # Book tickets
         user = User("U1", "John Doe", "john@example.com")
         selected_seats = [show1.seats["1-5"], show1.seats["1-6"]]
-
-        try:
-            seat_ids = [seat.id for seat in selected_seats]
-            booking_system.lock_provider.lock_seats(show1.id, seat_ids, user.id, duration=10)
-
-            # Check locked seats after locking
-            locked = booking_system.lock_provider.get_locked_seats(show1.id)
-            print(f"Locked seats for {show1.id}: {locked}")
-        except Exception as e:
-            print(f"Failed to lock seats: {str(e)}")
-            return
-
-        # Book using locked seats
         booking = booking_system.book_tickets(user, show1, selected_seats)
         if booking:
             print(f"Booking successful. Booking ID: {booking.id}")
             booking_system.confirm_booking(booking.id)
-            # Check locked seats after booking
-            locked = booking_system.lock_provider.get_locked_seats(show1.id)
-            print(f"Locked seats for {show1.id}: {locked}")
         else:
-            print("Booking failed. Could not proceed with booking.")
+            print("Booking failed. Seats not available.")
 
-        # Optional: Cancel booking
+        # Cancel booking
         # booking_system.cancel_booking(booking.id)
 
 def create_seats(rows, columns):
