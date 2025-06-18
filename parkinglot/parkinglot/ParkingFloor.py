@@ -22,6 +22,13 @@ class ParkingFloor:
             if not spot.is_occupied() and spot.get_spot_type().lower() == vehicle_type.lower():
                 return spot
         return None
+    
+    def get_status(self, vehicle_type: str) -> str:
+        for spot in self.spots:
+            if spot.get_spot_type().lower() == vehicle_type.lower():
+                status = "Available" if not spot.is_occupied() else "Occupied"
+                print(f"Spot {spot.get_spot_number()} ({spot.get_spot_type()}): {status}")
+
 
     def get_parking_spots(self) -> List[ParkingSpot]:
         return self.spots

@@ -10,7 +10,8 @@ def show_menu():
     print("Please choose an option from below:")
     print("1. Park a vehicle")
     print("2. Vacate a vehicle spot")
-    print("3. Exit the system")
+    print("3. Get parking status by vehicle type")
+    print("4. Exit the system")
     print("******************************************************")
 
 
@@ -37,7 +38,7 @@ def vacate_spot(exit_gate: ExitGate):
 
 def main():
     # Initialize the parking lot with one floor and 2 car spots and 2 bike spots
-    floor = ParkingFloor(floor_number=1, num_of_car_spots=2, num_of_bike_spots=2)
+    floor = ParkingFloor(floor_number=1, num_of_car_spots=2, num_of_bike_spots=3)
     parking_lot = ParkingLot(floors=[floor])
 
     # Initialize services
@@ -61,7 +62,19 @@ def main():
             park_vehicle(entrance_gate)
         elif choice == 2:
             vacate_spot(exit_gate)
+        # elif choice == 3:
+        #     vehicle_type = input("Enter vehicle type (car/bike): ").strip().lower()
+        #     floor_number = int(input("Enter floor number: "))
+        #     if floor_number < 1 or floor_number > len(parking_lot.get_floors()):
+        #         print("Invalid floor number!")
+        #         continue
+        #     parking_lot.get_floors()[floor_number-1].get_status(vehicle_type)
         elif choice == 3:
+            vehicle_type = input("Enter vehicle type (car/bike): ").strip().lower()
+            for floor in parking_lot.get_floors():
+                print(f"Status for Floor {floor.floor_number}:")
+                floor.get_status(vehicle_type)
+        elif choice == 4:
             print("Thank you for using the Parking Lot System!")
             break
         else:
