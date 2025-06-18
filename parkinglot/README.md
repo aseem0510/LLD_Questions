@@ -1,6 +1,8 @@
-# Designing a Movie Ticket Booking System like BookMyShow
+# Designing a Parking Lot
 
 ## Requirements
+![image](https://github.com/user-attachments/assets/46d3a9e4-238d-4090-a43b-cf5712453d4c)
+
 
 
 ## Classes, Interfaces and Enumerations
