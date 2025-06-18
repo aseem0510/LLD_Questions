@@ -57,6 +57,15 @@ class Splitwise:
         # Step 3: Display balance sheets
         for user in self.user_controller.get_all_users():
             self.balance_sheet_controller.show_balance_sheet_of_user(user)
+        
+        # Step 4: Perform settlement (Alice settles ₹100 with Bob)
+        print("\n--- Alice Settles ₹100 with Bob ---")
+        self.settle_up_between_users("U1001", "U2001", 100.0)
+
+        # Step 5: Display balance sheets after settlement
+        print("\n--- Balance Sheets After Settlement ---")
+        for user in self.user_controller.get_all_users():
+            self.balance_sheet_controller.show_balance_sheet_of_user(user)
 
     def setup_users_and_group(self):
         self.register_users()
@@ -66,3 +75,12 @@ class Splitwise:
         self.user_controller.add_user(User("U1001", "Alice"))
         self.user_controller.add_user(User("U2001", "Bob"))
         self.user_controller.add_user(User("U3001", "Charlie"))
+
+    def settle_up_between_users(self, payer_id: str, payee_id: str, amount: float):
+        payer = self.user_controller.get_user(payer_id)
+        payee = self.user_controller.get_user(payee_id)
+        if not payer or not payee:
+            print("Invalid user IDs.")
+            return
+        self.balance_sheet_controller.settle_up(payer, payee, amount)
+

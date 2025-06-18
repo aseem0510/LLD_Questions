@@ -43,5 +43,34 @@ class BalanceSheetController:
 
         for user_id, balance in user_sheet.user_vs_balance.items():
             print(f"userID: {user_id} YouGetBack: {balance.amount_get_back} YouOwe: {balance.amount_owe}")
+            net_balance = balance.amount_get_back - balance.amount_owe
+
+            if net_balance > 0:
+                print(f"FinalBalanceWithUser: You get back ₹{net_balance}")
+            elif net_balance < 0:
+                print(f"FinalBalanceWithUser: You owe ₹{-net_balance}")
+            else:
+                print(f"FinalBalanceWithUser: All settled up with user {user_id}")
 
         print("---------------------------------------")
+
+
+    def settle_up(self, payer: User, payee: User, amount: float):
+        payer_sheet = payer.user_expense_balance_sheet
+        payee_sheet = payee.user_expense_balance_sheet
+
+        payer_balance = payer_sheet.user_vs_balance.get(payee.user_id)
+        payee_balance = payee_sheet.user_vs_balance.get(payer.user_id)
+
+        if not payer_balance or payer_balance.amount_owe < amount:
+            print(f"Cannot settle ₹{amount}. You owe only ₹{payer_balance.amount_owe if payer_balance else 0}.")
+            return
+
+        # Adjust balances
+        payer_balance.amount_owe -= amount
+        payer_sheet.total_you_owe -= amount
+
+        payee_balance.amount_get_back -= amount
+        payee_sheet.total_you_get_back -= amount
+
+        print(f"{payer.user_name} settled ₹{amount} with {payee.user_name}.")
