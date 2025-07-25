@@ -17,6 +17,8 @@
 * Maintainability: Code should be modular and easy to update
 * Usability: Simple and intuitive interface
 
+<img width="1111" height="1280" alt="image" src="https://github.com/user-attachments/assets/c79eb901-4d21-4158-9e32-0cd1d201d6ee" />
+
 # 3. SOLID Principles Used
 * Single Responsibility: Each class has a single responsibility (Employee handles employee data, Attendance handles attendance, etc.)
 * Open/Closed: Classes can be extended (e.g., new salary calculation logic) without modifying existing code.
@@ -71,6 +73,10 @@
 # Why Not NoSQL:
 * NoSQL (e.g., MongoDB, Cassandra) is better for unstructured, rapidly changing, or massive scale data (e.g., logs, social feeds). Here, the data is structured and relationships are important.
 * Eventual Consistency in NoSQL is not suitable for payroll, where accuracy is critical.
+
+<img width="1280" height="877" alt="image" src="https://github.com/user-attachments/assets/966f4173-2a52-4697-bf10-4490d80c61f1" />
+
+<img width="1154" height="1280" alt="image" src="https://github.com/user-attachments/assets/70e0a35b-1adb-4f1c-9800-74c1fea83665" />
 
 # 6. APIs
 
