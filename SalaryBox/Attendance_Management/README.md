@@ -21,6 +21,10 @@
 5. Extensibility: Easy to add features like reporting, authentication, or admin roles.
 6. Data Integrity: No data loss or corruption, even with rapid or repeated punches.
 
+<img width="1280" height="970" alt="image" src="https://github.com/user-attachments/assets/a79e9eeb-8fd3-4bb2-98e3-e9f26f7dcdaa" />
+
+<img width="1280" height="647" alt="image" src="https://github.com/user-attachments/assets/e179608e-846f-499b-862d-94a10a08ed47" />
+
 # 3. SOLID Principles & Design Patterns Used
 
 # SOLID Principles
@@ -96,6 +100,10 @@
 * Attendance data is structured and relational.
 * NoSQL eventual consistency is not ideal for attendance (risk of data loss or duplication).
 # Recommended DB: SQL (e.g., PostgreSQL, MySQL)
+
+<img width="1280" height="1187" alt="image" src="https://github.com/user-attachments/assets/31d388c1-4780-44e9-bc23-3e0ab8a297e4" />
+
+<img width="1280" height="1202" alt="image" src="https://github.com/user-attachments/assets/8e152cec-3f61-4edc-9cbc-329eb8190da3" />
 
 # 6. APIs
 
