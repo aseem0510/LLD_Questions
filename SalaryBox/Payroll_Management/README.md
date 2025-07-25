@@ -74,7 +74,7 @@
 
 # 6. APIs
 
-# Employee APis
+# Employee APIs
 * POST /employees - Add employee
 * GET /employees/{id} - Get employee details
 * PUT /employees/{id} — Update employee
@@ -89,6 +89,6 @@
 * GET /payslips/{id} - Get payslip details
 * GET "/payslips?emp_id=&month=&year=" - List payslips
 
-Auth APis
+# Auth APis
 * POST /login - Login (admin/employee)
 * POST /logout - Logout
