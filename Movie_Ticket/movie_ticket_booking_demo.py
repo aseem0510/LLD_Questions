@@ -5,8 +5,6 @@ from theater import Theater
 from show import Show
 from seat import Seat, SeatType, SeatStatus
 from user import User
-import threading
-import time
 
 class MovieTicketBookingDemo:
     @staticmethod

@@ -82,8 +82,6 @@ class MovieTicketBookingSystem:
                 return False
         return True
 
-
-
     def _mark_seats_as_booked(self, show: Show, selected_seats: List[Seat]):
         for seat in selected_seats:
             show_seat = show.seats.get(seat.id)
