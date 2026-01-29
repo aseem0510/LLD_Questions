@@ -10,6 +10,7 @@ class IdleState(VendingMachineState):
     def select_product(self, product: Product):
         if self.vending_machine.inventory.is_available(product):
             self.vending_machine.selected_product = product
+            self.vending_machine.total_payment = 0.0
             self.vending_machine.set_state(self.vending_machine.ready_state)
             print(f"Product selected: {product.name}")
         else:

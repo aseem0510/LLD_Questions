@@ -9,9 +9,9 @@ class VendingMachineDemo:
         vending_machine = VendingMachine.get_instance()
 
         # Add products to the inventory
-        coke = Product("Coke", 1.5)
-        pepsi = Product("Pepsi", 1.5)
-        water = Product("Water", 1.0)
+        coke = Product("Coke", 30.0)
+        pepsi = Product("Pepsi", 20.0)
+        water = Product("Water", 20.0)
 
         vending_machine.inventory.add_product(coke, 5)
         vending_machine.inventory.add_product(pepsi, 3)
@@ -21,13 +21,13 @@ class VendingMachineDemo:
         vending_machine.select_product(coke)
 
         # Insert coins
-        vending_machine.insert_coin(Coin.QUARTER)
-        vending_machine.insert_coin(Coin.QUARTER)
-        vending_machine.insert_coin(Coin.QUARTER)
-        vending_machine.insert_coin(Coin.QUARTER)
+        vending_machine.insert_coin(Coin.TEN)
+        vending_machine.insert_coin(Coin.TEN)
+        vending_machine.insert_coin(Coin.TEN)
+        vending_machine.insert_coin(Coin.TEN)
 
         # Insert a note
-        vending_machine.insert_note(Note.FIVE)
+        vending_machine.insert_note(Note.TWENTY)
 
         # Dispense the product
         vending_machine.dispense_product()
@@ -35,20 +35,22 @@ class VendingMachineDemo:
         # Return change
         vending_machine.return_change()
 
+        print("\n--- New Transaction ---\n")
+
         # Select another product
         vending_machine.select_product(pepsi)
 
         # Insert insufficient payment
-        vending_machine.insert_coin(Coin.QUARTER)
+        vending_machine.insert_coin(Coin.TEN)
 
         # Try to dispense the product
         vending_machine.dispense_product()
 
         # Insert more coins
-        vending_machine.insert_coin(Coin.QUARTER)
-        vending_machine.insert_coin(Coin.QUARTER)
-        vending_machine.insert_coin(Coin.QUARTER)
-        vending_machine.insert_coin(Coin.QUARTER)
+        vending_machine.insert_coin(Coin.TEN)
+        vending_machine.insert_coin(Coin.TEN)
+        vending_machine.insert_coin(Coin.TEN)
+        vending_machine.insert_coin(Coin.TEN)
 
         # Dispense the product
         vending_machine.dispense_product()

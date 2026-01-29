@@ -22,7 +22,7 @@ class ReturnChangeState(VendingMachineState):
     def return_change(self):
         change = self.vending_machine.total_payment - self.vending_machine.selected_product.price
         if change > 0:
-            print(f"Change returned: ${change:.2f}")
+            print(f"Change returned: Rupees-{change:.2f}")
             self.vending_machine.reset_payment()
         else:
             print("No change to return.")
