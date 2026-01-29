@@ -27,5 +27,8 @@ class ATMDemo:
         balance = atm.check_balance("1234567890")
         print("Updated account balance:", balance)
 
+        balance = atm.check_balance("9876543210")
+        print("Updated account balance:", balance)
+
 if __name__ == "__main__":
     ATMDemo.run()
