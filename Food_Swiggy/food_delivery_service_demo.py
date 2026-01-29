@@ -60,5 +60,8 @@ class FoodDeliveryServiceDemo:
         service.cancel_order(order.id)
         print(f"Order cancelled: {order.id}")
 
+        # Check order details again
+        print(f"Order details: {order.id}, status: {order.status}, items: {[(item.item.name, item.quantity) for item in order._items]}")
+
 if __name__ == "__main__":
     FoodDeliveryServiceDemo.run()

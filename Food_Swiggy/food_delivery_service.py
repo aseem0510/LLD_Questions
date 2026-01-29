@@ -64,10 +64,11 @@ class FoodDeliveryService:
 
     def cancel_order(self, order_id: str):
         order = self.orders.get(order_id)
-        if order and order.status == OrderStatus.PENDING:
+        if order and order.status != OrderStatus.DELIVERED and order.status != OrderStatus.CANCELLED:
             order.set_status(OrderStatus.CANCELLED)
             self.notify_customer(order)
             self.notify_restaurant(order)
+            # Penalty in case of OUT_FOR_DELIVERY, PREPARING etc. can be handled here
 
     def notify_customer(self, order: Order):
         # Send notification to the customer about the order status update
