@@ -3,7 +3,6 @@ from parkinglot.ParkingFloor import ParkingFloor
 from vehicles.Vehicle import Vehicle
 from typing import List, Optional
 
-
 class ParkingLot:
     def __init__(self, floors: List[ParkingFloor]):
         self.floors = floors

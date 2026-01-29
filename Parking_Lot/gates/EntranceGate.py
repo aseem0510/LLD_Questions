@@ -1,6 +1,5 @@
 from vehicles.VehicleFactory import VehicleFactory
 from parkinglot.ParkingLot import ParkingLot
-from typing import Optional
 
 class EntranceGate:
     def __init__(self, parking_lot: ParkingLot):
@@ -15,8 +14,9 @@ class EntranceGate:
             print("Invalid vehicle type! Only Car and Bike are allowed.")
             return
 
-        spot = self.parking_lot.park_vehicle(vehicle)
-        if spot:
-            print(f"Vehicle parked successfully in spot: {spot.get_spot_number()}")
-        else:
-            print("No available spots for the vehicle type.")
+        # spot = self.parking_lot.park_vehicle(vehicle)
+        # if spot:
+        #     print(f"Vehicle parked successfully in spot: {spot.get_spot_number()}")
+        # else:
+        #     print("No available spots for the vehicle type.")
+        self.parking_lot.park_vehicle(vehicle)
