@@ -17,7 +17,7 @@ class CoffeeVendingMachineDemo:
         coffee_machine.dispense_coffee(cappuccino, Payment(3.5))
 
         latte = coffee_machine.select_coffee("Latte")
-        coffee_machine.dispense_coffee(latte, Payment(4.0))
+        coffee_machine.dispense_coffee(latte, Payment(3.5))
 
 
 if __name__ == "__main__":
