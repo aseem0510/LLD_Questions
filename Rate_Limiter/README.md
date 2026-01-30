@@ -1,4 +1,5 @@
 1️⃣ Requirements
+
 ✅ Functional Requirements
 
 1- Limit API requests per client (user / API key / IP).
@@ -23,6 +24,7 @@
 - Thread-safe.
 
 2️⃣ Classes, Interfaces & UML Diagram
+
 🧩 Core Components
 
 
@@ -44,54 +46,12 @@
 | `RateLimiterFactory`     | Creates limiter based on algorithm |
 | `RateLimitConfig`        | Configuration holder               |
 
+<img width="800" height="919" alt="image" src="https://github.com/user-attachments/assets/af273ed2-5dc1-4d01-83a6-a92a6ef9c908" />
+<img width="2000" height="847" alt="image" src="https://github.com/user-attachments/assets/08c06a2d-9722-4a7e-b80f-2fa2160494b2" />
+<img width="2000" height="925" alt="image" src="https://github.com/user-attachments/assets/ee8cfb3c-cbe7-4c43-96ac-3c948c2e9c2f" />
 
 (Textual UML – interviewer friendly)
-+------------------+
-|  RateLimiter     |<<interface>>
-+------------------+
-| allow(clientId)  |
-+------------------+
-        ^
-        |
-+---------------------------+
-| TokenBucketRateLimiter   |
-+---------------------------+
-| store: RateLimitStore    |
-| config: RateLimitConfig  |
-+---------------------------+
-| allow(clientId)          |
-+---------------------------+
-
-+----------------------+
-| TokenBucket          |
-+----------------------+
-| capacity             |
-| tokens               |
-| refillRate           |
-| lastRefillTimestamp  |
-+----------------------+
-| tryConsume()         |
-| refill()             |
-+----------------------+
-
-+----------------------+
-| RateLimitStore       |<<interface>>
-+----------------------+
-| getBucket(clientId)  |
-| saveBucket(...)      |
-+----------------------+
-
-+----------------------+
-| InMemoryStore        |
-+----------------------+
-| buckets: Map         |
-+----------------------+
-
-+----------------------+
-| RateLimiterFactory   |
-+----------------------+
-| getLimiter(...)      |
-+----------------------+
+<img width="251" height="757" alt="image" src="https://github.com/user-attachments/assets/c75808c2-f4c4-424f-b3c9-014d6883da9e" />
 
 3️⃣ SOLID Principles Used
 
