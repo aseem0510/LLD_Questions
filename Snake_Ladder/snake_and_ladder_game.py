@@ -12,12 +12,14 @@ class SnakeAndLadderGame:
     def play(self):
         while not self._is_game_over():
             current_player = self.players[self.current_player_index]
+            print(f"\n{current_player.get_name()}'s turn. Current position: {current_player.get_position()}")
             dice_roll = self.dice.roll()
+            print(f"{current_player.get_name()} rolled a {dice_roll}")
             new_position = current_player.get_position() + dice_roll
 
             if new_position <= self.board.get_board_size():
                 current_player.set_position(self.board.get_new_position_after_snake_or_ladder(new_position))
-                print(f"{current_player.get_name()} rolled a {dice_roll} and moved to position {current_player.get_position()}")
+                print(f"Moved to position {current_player.get_position()}")
 
             if current_player.get_position() == self.board.get_board_size():
                 print(f"{current_player.get_name()} wins!")

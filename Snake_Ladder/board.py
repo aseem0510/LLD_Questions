@@ -31,10 +31,12 @@ class Board:
     def get_new_position_after_snake_or_ladder(self, position):
         for snake in self.snakes:
             if snake.get_start() == position:
+                print(f"Hit a snake at {position}, sliding down to {snake.get_end()}")
                 return snake.get_end()
 
         for ladder in self.ladders:
             if ladder.get_start() == position:
+                print(f"Climbed a ladder at {position}, climbing up to {ladder.get_end()}")
                 return ladder.get_end()
 
         return position
