@@ -45,6 +45,9 @@
 
 ---
 
+<img width="1333" height="687" alt="image" src="https://github.com/user-attachments/assets/1ada6a93-9ec2-4b23-9446-1cd3b4720ee0" />
+
+
 ### Design Patterns
 
 1. **State Pattern**
