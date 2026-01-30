@@ -21,8 +21,11 @@
     - Trigger fine payment
     
 5- Track borrowing history with timestamps.
+
 6- Prevent unregistering members with active borrowings.
+
 7- Support multiple fine calculation rules.
+
 8- Support multiple payment methods.
 
 ✅ Non-Functional Requirements
