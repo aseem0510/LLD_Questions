@@ -1,19 +1,69 @@
-# Designing a Library Management System
+1️⃣ Requirements
 
-## Requirements
-1. The library management system should allow librarians to manage books, members, and borrowing activities.
-2. The system should support adding, updating, and removing books from the library catalog.
-3. Each book should have details such as title, author, ISBN, publication year, and availability status.
-4. The system should allow members to borrow and return books.
-5. Each member should have details such as name, member ID, contact information, and borrowing history.
-6. The system should enforce borrowing rules, such as a maximum number of books that can be borrowed at a time and loan duration.
-7. The system should handle concurrent access to the library catalog and member records.
-8. The system should be extensible to accommodate future enhancements and new features.
+✅ Functional Requirements
 
-## Classes, Interfaces and Enumerations
-1. The **Book** class represents a book in the library catalog, with properties such as ISBN, title, author, publication year, and availability status.
-2. The **Member** class represents a library member, with properties like member ID, name, contact information, and a list of borrowed books.
-3. The **LibraryManager** class is the core of the library management system and follows the Singleton pattern to ensure a single instance of the library manager.
-4. The LibraryManager class uses concurrent data structures (ConcurrentHashMap) to handle concurrent access to the library catalog and member records.
-5. The LibraryManager class provides methods for adding and removing books, registering and unregistering members, borrowing and returning books, and searching for books based on keywords.
-6. The **LibraryManagementSystemDemo** class serves as the entry point of the application and demonstrates the usage of the library management system.
+1- Add, remove, update, and search books.
+2- Register and unregister members.
+3- Borrow a book:
+    - Book must be available
+    - Member must not exceed max borrow limit
+4- Return a book:
+    - Calculate overdue days
+    - Calculate fine if overdue
+    - Trigger fine payment
+5- Track borrowing history with timestamps.
+6- Prevent unregistering members with active borrowings.
+7- Support multiple fine calculation rules.
+8- Support multiple payment methods.
+
+✅ Non-Functional Requirements
+
+- Extensibility – New fine rules / payment modes without code changes.
+- Maintainability – Clear separation of responsibilities.
+- Scalability – Ready for DB/search service integration.
+- Consistency – No invalid borrow / return operations.
+- Testability – Each component independently testable.
+- Thread-safety (future) – Design allows safe synchronization.
+
+2️⃣ Classes, Interfaces & Responsibilities
+1- Core Domain
+    - Book – Represents a book in catalog.
+    - Member – Represents a library member.
+    - BorrowTransaction – Tracks borrow timestamp & ownership.
+
+2- Management
+    - LibraryManager (Singleton) – Orchestrates system operations.
+
+3- Policy
+    - FinePolicy (interface) – Fine calculation abstraction.
+    - DefaultFinePolicy – Default fine logic.
+
+4- Payment
+    - PaymentStrategy (interface) – Payment abstraction.
+    - UPIPayment / CreditCardPayment – Concrete strategies.
+    - PaymentProcessor – Executes payment.
+
+
+UML Relationships (Explain verbally)
+
+    - LibraryManager has-a FinePolicy
+    - PaymentProcessor uses PaymentStrategy
+    - BorrowTransaction associates Member ↔ Book
+    - Concrete strategies implement interfaces
+
+3️⃣ SOLID Principles Used
+| Principle | Applied Where                                  |
+| --------- | ---------------------------------------------- |
+| SRP       | Book, Member, FinePolicy, PaymentProcessor     |
+| OCP       | Add new fine/payment without modifying manager |
+| LSP       | Any FinePolicy can replace another             |
+| ISP       | Small, focused interfaces                      |
+| DIP       | LibraryManager depends on abstractions         |
+
+4️⃣ Design Patterns Used
+| Pattern     | Usage                       |
+| ----------- | --------------------------- |
+| Singleton   | LibraryManager              |
+| Strategy    | Payment methods             |
+| Policy      | Fine calculation            |
+| Composition | Manager → Policy / Strategy |
