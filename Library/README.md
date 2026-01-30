@@ -3,10 +3,13 @@
 ✅ Functional Requirements
 
 1- Add, remove, update, and search books.
+
 2- Register and unregister members.
+
 3- Borrow a book:
     - Book must be available
     - Member must not exceed max borrow limit
+
 4- Return a book:
     - Calculate overdue days
     - Calculate fine if overdue
@@ -26,6 +29,7 @@
 - Thread-safety (future) – Design allows safe synchronization.
 
 2️⃣ Classes, Interfaces & Responsibilities
+
 1- Core Domain
     - Book – Represents a book in catalog.
     - Member – Represents a library member.
@@ -42,6 +46,8 @@
     - PaymentStrategy (interface) – Payment abstraction.
     - UPIPayment / CreditCardPayment – Concrete strategies.
     - PaymentProcessor – Executes payment.
+
+<img width="360" height="549" alt="image" src="https://github.com/user-attachments/assets/96621764-9136-45ac-bd4c-e18532497f42" />
 
 
 UML Relationships (Explain verbally)
