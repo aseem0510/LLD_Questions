@@ -16,7 +16,7 @@ class CarRentalSystemDemo:
 
             # Create customers
             customer1 = Customer("John Doe", "john@example.com", "DL1234")
-            customer2 = Customer("Jane Smith", "jane@example.com", "DL5678")
+            # customer2 = Customer("Jane Smith", "jane@example.com", "DL5678")
 
             # Make reservations
             start_date = date.today()

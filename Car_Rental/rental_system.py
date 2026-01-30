@@ -21,10 +21,15 @@ class RentalSystem:
         return RentalSystem._instance
 
     def add_car(self, car):
+        if car.license_plate in self.cars:
+            raise Exception("Car already exists")
         self.cars[car.license_plate] = car
 
     def remove_car(self, license_plate):
-        self.cars.pop(license_plate, None)
+        if license_plate in self.cars:
+            self.cars.pop(license_plate, None)
+        else:
+            raise Exception("Car not found")
 
     def search_cars(self, make, model, start_date, end_date):
         available_cars = []
@@ -60,3 +65,20 @@ class RentalSystem:
 
     def generate_reservation_id(self):
         return "RES" + str(uuid.uuid4())[:8].upper()
+    
+    # Extra methods for testing and demonstration purposes
+    def get_reservation(self, reservation_id):
+        return self.reservations.get(reservation_id, None)
+    
+    def get_all_reservations(self):
+        return list(self.reservations.values())
+    
+    # def get_all_available_cars(self):
+    #     return [car for car in self.cars.values() if car.available]
+    
+    def get_list_of_available_cars(self, start_date, end_date):
+        available_cars = []
+        for car in self.cars.values():
+            if car.available and self.is_car_available(car, start_date, end_date):
+                available_cars.append(car)
+        return available_cars
